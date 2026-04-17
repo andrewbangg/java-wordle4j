@@ -19,7 +19,7 @@ public class WordleDictionary {
 
     public String getRandomWord() {
         Random rnd = new Random();
-        int number = rnd.nextInt(words.size()) + 1;
+        int number = rnd.nextInt(words.size()) ;
         return words.get(number);
     }
 

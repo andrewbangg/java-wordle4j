@@ -2,7 +2,9 @@ package ru.yandex.practicum;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class WordleTest {
@@ -12,7 +14,7 @@ class WordleTest {
 
     @BeforeEach
     void setUp() {
-        List<String> words = Arrays.asList("дарам", "аббат", "вобла", "аборт","кринж");
+        List<String> words = Arrays.asList("дарам", "аббат", "вобла", "аборт", "кринж");
         dictionary = new WordleDictionary(words);
         game = new WordleGame(dictionary);
     }
@@ -38,11 +40,10 @@ class WordleTest {
 
     @Test
     void testDecrementStep_ShouldReduceSteps() {
-        int step = game.leftStep();
-        step--;
+        int step = game.leftStep() - 1;
         assertEquals(5, step);
 
-        step--;
+        step -= 1;
         assertEquals(4, step);
     }
 
