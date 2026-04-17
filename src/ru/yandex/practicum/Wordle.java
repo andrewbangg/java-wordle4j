@@ -32,6 +32,7 @@ public class Wordle {
         }
 
     }
+
     private static void logError(Exception e) {
         try (FileWriter fw = new FileWriter("error.log", true);
              PrintWriter pw = new PrintWriter(fw)) {
