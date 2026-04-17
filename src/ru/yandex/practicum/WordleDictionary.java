@@ -17,13 +17,13 @@ public class WordleDictionary {
         this.words = words;
     }
 
-    public String getRandomWord(){
+    public String getRandomWord() {
         Random rnd = new Random();
-        int number = rnd.nextInt(words.size())+1;
+        int number = rnd.nextInt(words.size()) + 1;
         return words.get(number);
     }
 
-    public List<String> getWords(){
+    public List<String> getWords() {
         return words;
     }
 
