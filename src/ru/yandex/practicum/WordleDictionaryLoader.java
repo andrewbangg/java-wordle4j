@@ -14,13 +14,14 @@ import java.util.List;
 public class WordleDictionaryLoader {
     public WordleDictionary load(String filename) throws IOException {
         List<String> words = new ArrayList<>();
-        try(BufferedReader reader = new BufferedReader(new FileReader(filename, StandardCharsets.UTF_8))){
-            while (reader.ready()){
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename, StandardCharsets.UTF_8))) {
+            while (reader.ready()) {
                 String word = reader.readLine().trim().toLowerCase().replace('ё', 'е');
                 if (word.length() == 5) {
                     words.add(word);
+                }
             }
         }
-    }return new WordleDictionary(words);
-}
+        return new WordleDictionary(words);
+    }
 }
