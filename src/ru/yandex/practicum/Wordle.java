@@ -41,7 +41,7 @@ public class Wordle {
             pw.println("ERROR: " + e.getMessage());
             pw.println("Stack trace:");
             e.printStackTrace(pw);
-            System.out.println("Произошла ошибка.\n"+ e.getMessage());
+            System.out.println("Произошла ошибка.\n" + e.getMessage());
 
         } catch (IOException ioException) {
             System.err.println("Не удалось записать ошибку в лог-файл: " + ioException.getMessage());
