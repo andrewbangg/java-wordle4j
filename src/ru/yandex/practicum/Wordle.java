@@ -17,18 +17,19 @@ import java.util.Scanner;
 public class Wordle {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, UserInputNotFiveWord {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Input name file:");
             String fileName = scanner.nextLine();
             WordleDictionaryLoader loader = new WordleDictionaryLoader();
             WordleDictionary dictionary = loader.load(fileName);
             WordleGame wordleGame = new WordleGame(dictionary);
-
             System.out.println("Game start! Good luck!");
             wordleGame.startGame(scanner);
-        } catch (Exception e) {
+        } catch (IOException | UserInputNotFiveWord e) {
             logError(e);
+        } catch (WordNot e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -40,7 +41,7 @@ public class Wordle {
             pw.println("ERROR: " + e.getMessage());
             pw.println("Stack trace:");
             e.printStackTrace(pw);
-            System.out.println("Произошла ошибка.");
+            System.out.println("Произошла ошибка.\n"+ e.getMessage());
 
         } catch (IOException ioException) {
             System.err.println("Не удалось записать ошибку в лог-файл: " + ioException.getMessage());

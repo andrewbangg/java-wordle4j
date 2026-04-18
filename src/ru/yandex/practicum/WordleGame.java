@@ -111,7 +111,7 @@ public class WordleGame {
         return steps;
     }
 
-    public void startGame(Scanner scanner) {
+    public void startGame(Scanner scanner) throws UserInputNotFiveWord, WordNot {
         boolean isGame = true;
 
         while (isGame && steps > 0) {
@@ -123,13 +123,11 @@ public class WordleGame {
             // Пустая строка - подсказка (не тратит попытку)
             if (userInput.isEmpty()) {
                 searchClue();
-                continue;
             }
 
             // Проверка длины
             if (userInput.length() != 5) {
-                System.out.println("Слово должно состоять из 5 букв!");
-                continue;
+                throw new UserInputNotFiveWord("Введено не 5 букв: " + userInput.length());
             }
 
             // Проверка наличия в словаре
@@ -205,7 +203,7 @@ public class WordleGame {
         return true;
     }
 
-    public void searchClue() {
+    public void searchClue() throws WordNot {
         for (String word : dictionary.getWords()) {
             if (historyWord.contains(word)) {
                 continue;
@@ -220,6 +218,6 @@ public class WordleGame {
                 return;
             }
         }
-        System.out.println("Не найдено подходящих слов в словаре");
+        throw new WordNot();
     }
 }

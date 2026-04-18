@@ -7,7 +7,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WordleTest {
+public class WordleTest {
 
     private WordleGame game;
     private WordleDictionary dictionary;
